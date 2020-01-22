@@ -1,0 +1,41 @@
+name: Publish swagger-codegen
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Maven Install
+        run: |
+          ./mvnw install
+      - name: Deploy swagger-codegen
+        run: |
+          cd modules/swagger-codegen
+          mvn deploy
+          cd ..
+      - name: Deploy swagger-codegen-cli
+        run: |
+          cd modules/swagger-codegen-cli
+          mvn deploy
+          cd ..
+      - name: Deploy swagger-codegen-maven-plugin
+        run: |
+          cd modules/swagger-codegen-maven-plugin
+          mvn deploy
+          cd ..
+      - name: Deploy swagger-generator
+        run: |
+          cd modules/swagger-generator
+          mvn deploy
+          cd ..
