@@ -68,7 +68,7 @@ public class JSON {
             public Class getClassForElement(JsonElement readElement) {
                 Map classByDiscriminatorValue = new HashMap();
                 {{#children}}
-                classByDiscriminatorValue.put("{{^vendorExtensions.x-discriminator-value}}{{name}}{{/vendorExtensions.x-discriminator-value}}{{#vendorExtensions.x-discriminator-value}}{{{vendorExtensions.x-discriminator-value}}}{{/vendorExtensions.x-discriminator-value}}".toUpperCase(), {{classname}}.class);
+                classByDiscriminatorValue.put("{{name}}".toUpperCase(), {{classname}}.class);
                 {{/children}}
                 classByDiscriminatorValue.put("{{classname}}".toUpperCase(), {{classname}}.class);
                 return getClassByDiscriminator(

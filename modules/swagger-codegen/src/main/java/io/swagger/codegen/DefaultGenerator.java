@@ -374,6 +374,9 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
             }
         });
 
+        System.err.println(definitions);
+        System.exit(1);
+
         // process models only
         for (String name : modelKeys) {
             try {
@@ -577,6 +580,10 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
     }
 
     protected void generateSupportingFiles(List<File> files, Map<String, Object> bundle) {
+//
+//        System.err.println(bundle);
+//        System.exit(1);
+
         if (!isGenerateSupportingFiles) {
             return;
         }
